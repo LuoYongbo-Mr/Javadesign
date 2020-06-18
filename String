@@ -1,0 +1,14 @@
+package bag2;
+import java.util.*;
+public class Exp1 {
+	public static void main(String[] args)
+	{
+		Scanner in= new Scanner(System.in);
+		String ff=in.nextLine();
+		int a=in.nextInt();
+		int b=in.nextInt();
+		String ss=ff.substring(a, b);
+		ss=ss.toUpperCase();
+		System.out.print(ss);
+	}
+}
