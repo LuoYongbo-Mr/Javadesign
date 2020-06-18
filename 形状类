@@ -1,0 +1,62 @@
+package bag0;
+import java.util.*;
+public class Exp0 {
+	public static void main(String[] args) {
+		double r,w,h;
+		Scanner scn=new Scanner(System.in);
+		r=scn.nextDouble();
+		w=scn.nextDouble();
+		h=scn.nextDouble();
+		MyCircle c=new MyCircle("大圆",r);
+		MyRectangle rec=new MyRectangle("长方形",w,h);
+		c.draw();
+		System.out.println("Area="+String.format("%.2f", c.getArea()));
+		rec.draw();
+		System.out.println("Area="+String.format("%.2f", rec.getArea()));
+		}
+}
+class MyShap{
+	private String name;
+	public MyShap() {
+	}
+	public MyShap(String name) {
+		this.setName(name);
+	}
+	public double getArea() {
+		return 0;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+}
+class MyCircle extends MyShap{
+	private double r;
+	public MyCircle(String name,double r) {
+		super(name);
+		this.r=r;
+	}
+	public void draw() {
+		System.out.println(super.getName()+":r="+this.r);
+	}
+	public double getArea() {
+		return Math.PI*this.r*this.r;
+	}
+}
+class MyRectangle extends MyShap{
+	private double w;
+	private double h;
+	public MyRectangle(String name,double w,double h) {
+		super(name);
+		this.w=w;
+		this.h=h;
+	}
+	public void draw() {
+		System.out.println(super.getName()+":w="+this.w+",h="+this.h);
+	}
+	public double getArea() {
+		return this.w*this.h;
+	}
+}
