@@ -1,0 +1,38 @@
+import java.util.*;
+public class Exp2 {
+	public static void main(String[] args){
+		int x1,x,y1;
+		Scanner scn=new Scanner(System.in);
+		x1=scn.nextInt();y1=scn.nextInt();
+		x=scn.nextInt();
+		Point p1 = new Point(x1,y1);
+		Point p2 = new Point(x);
+		System.out.println(String.format("%.2f", p1.distance()));
+		System.out.println(String.format("%.2f", p2.distance()));
+		System.out.println(String.format("%.2f", p1.distance(6,8)));
+		System.out.println(String.format("%.2f", p1.distance(p2)));
+		}
+
+}
+class Point{
+	private int x;
+	private int y;
+	public Point() {}
+	public Point(int x,int y) {
+		this.x=x;
+		this.y=y;
+	}
+	public Point(int x) {
+		this.x=x;
+		this.y=x;
+	}
+	public double distance() {
+		return Math.sqrt(x*x+y*y);
+	}
+	public double distance(int x,int y) {
+		return Math.sqrt((x-this.x)*(x-this.x)+(y-this.y)*(y-this.y));
+	}
+	public double distance(Point p) {
+		return Math.sqrt((x-p.x)*(x-p.x)+(y-p.y)*(y-p.y));
+	}
+}
