@@ -1,0 +1,60 @@
+package bag0;
+import java.util.*;
+public class Exp1 {
+	public static void main(String[] args) {
+		double w1,h1,w2,h2;
+		String color;
+		Scanner scn=new Scanner(System.in);
+		w1=scn.nextDouble();
+		h1=scn.nextDouble();
+		color=scn.next();
+		w2=scn.nextDouble();
+		h2=scn.nextDouble();
+		MyBox b=new MyBox(w1,h1);
+		MyColorBox cb=new MyColorBox(color,w2,h2);
+		b.draw();
+		cb.draw();
+		System.out.println("Area="+String.format("%.2f", b.getArea()));
+		System.out.println("Area="+String.format("%.2f", cb.getArea()));
+		}
+}
+class MyBox{
+	private double w;
+	private double h;
+	public MyBox() {}
+	public MyBox(double w,double h) {
+		this.w=w;
+		this.h=h;
+	}
+	public void draw() {
+		System.out.println("w="+this.w+",h="+this.h);
+	}
+	public double getArea() {
+		return w*h;
+	}
+	public double getW() {
+		return w;
+	}
+	public void setW(double w) {
+		this.w = w;
+	}
+	public double getH() {
+		return h;
+	}
+	public void setH(double h) {
+		this.h = h;
+	}
+}
+class MyColorBox extends MyBox{
+	private String color;
+	public MyColorBox(String color,double w,double h) {
+		super(w,h);
+		this.color=color;
+	}
+	public void draw() {
+		System.out.println(color+":w="+super.getW()+",h="+super.getH());
+	}
+	public double getArea() {
+		return super.getH()*super.getW();
+	}
+}
