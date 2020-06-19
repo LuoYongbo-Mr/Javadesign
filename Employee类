@@ -1,0 +1,46 @@
+package bag2;
+import java.util.*;
+public class Exp4 {
+	public static void main(String[] args){
+		String id;
+		String name;
+		double salary;
+		Employee[] es = new Employee[5];
+		es[0]= new Employee("001","zhang",5000);
+		es[1]= new Employee("002","li",8000);
+		es[2]= new Employee("003","zhao",6000);
+		es[3]= new Employee("004","song",6500);
+
+		Scanner scn=new Scanner(System.in);
+		id=scn.next();
+		name=scn.next();
+		salary=scn.nextDouble();
+		es[4]= new Employee(id,name,salary);
+
+		Arrays.sort(es);
+
+		for(Employee e: es){
+		System.out.println(e);
+		}
+		}
+}
+class Employee implements Comparable<Employee>{
+	private String id;
+	private String name;
+	private double salary;
+	public Employee() {}
+	public Employee(String id,String name,double salary) {
+		this.id=id;
+		this.name=name;
+		this.salary=salary;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.id+","+this.name+","+this.salary;
+	}
+	public int compareTo(Employee da) {
+		return Double.compare(salary, da.salary);
+		
+	}
+}
