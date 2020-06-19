@@ -1,0 +1,90 @@
+package bag0;
+import java.util.*;
+public class Exp2 {
+	public static void main(String[] args) {
+		//建立一个3年期的定期账户
+		Scanner scn=new Scanner (System.in);
+		double balance=scn.nextDouble();
+		FixedDepositAccount fda = new FixedDepositAccount();
+		fda.setId("001");
+		fda.setBalance(balance);
+		fda.setMonths(36);
+		fda.setRate(0.035);
+		System.out.println(fda);
+
+		//建立一个182天的理财账户
+		BankingAccount ba = new BankingAccount();
+		ba.setId("002");
+		ba.setBalance(balance);
+		ba.setDays(182);
+		ba.setRate(0.052);
+		System.out.println(ba);
+		}
+}
+class Account{
+	private String id;
+	private double balance;
+	public Account() {}
+	public Account(String id,double balance) {
+		this.id=id;
+		this.balance=balance;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+}
+class FixedDepositAccount extends Account{
+	private int months;
+	private double rate;
+	public FixedDepositAccount() {}
+	public FixedDepositAccount(String id,double balance,int months,double rate) {
+		super(id,balance);
+		this.months=months;
+		this.rate=rate;
+	}
+	public int getMonths() {
+		return months;
+	}
+	public void setMonths(int months) {
+		this.months = months;
+	}
+	public double getRate() {
+		return rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+	@Override
+	public String toString() {
+		return super.getId()+"账户利息："+String.format("%.2f", super.getBalance()*this.months*this.rate/12);
+	}
+}
+class BankingAccount extends Account{
+	private int days;
+	private double rate;
+	public BankingAccount() {}
+	public int getDays() {
+		return days;
+	}
+	public void setDays(int days) {
+		this.days = days;
+	}
+	public double getRate() {
+		return rate;
+	}
+	public void setRate(double rate) {
+		this.rate = rate;
+	}
+	public String toString() {
+		return super.getId()+"账户:"+String.format("%.2f", super.getBalance()*this.days*this.rate/365);
+	}
+}
