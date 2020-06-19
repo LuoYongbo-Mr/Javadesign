@@ -65,7 +65,7 @@ class FixedDepositAccount extends Account{
 	}
 	@Override
 	public String toString() {
-		return super.getId()+"账户利息："+String.format("%.2f", super.getBalance()*this.months*this.rate/12);
+		return super.getId()+"账户利息:"+String.format("%.2f", super.getBalance()*this.months*this.rate/12);
 	}
 }
 class BankingAccount extends Account{
