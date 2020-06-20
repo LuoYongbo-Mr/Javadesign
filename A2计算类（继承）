@@ -1,0 +1,87 @@
+
+import java.util.*;
+public class Exp0 {
+	public static void main(String[] args) {
+		int x,y,z;
+		Scanner scn = new Scanner(System.in);
+		x=scn.nextInt();
+		y=scn.nextInt();
+		z=scn.nextInt();
+		Calculate calculate = new Calculate();
+		calculate.run();
+		calculate.calculate(new fab(x));//x的绝对值
+		calculate.calculate(new comDiv(x,y));//x,y最大公约
+		calculate.calculate(new mul(x,y,z));//x,y,z的乘积
+		}
+}
+		class Calculate{
+		public void run() {
+		System.out.println("计算功能已开启");
+		}
+		public void calculate(mymath m) {
+		System.out.println(m.cal());
+		}
+		}
+class fab extends mymath{
+	public fab(int x) {
+		super(x);
+	}
+		public int cal(){
+			if(super.getX()>=0)
+			return super.getX();
+			else
+				return (-1)*super.getX();
+	}
+}
+class comDiv extends mymath{
+	public comDiv(int x,int y) {
+		super(x,y);
+	}
+	public int cal() {
+		int a=getX()>getY()?getX():getY();
+		int b=getY()+getX()-a;
+		int c=1;
+		while(c!=0) {
+			c=a%b;
+			a=b;
+			b=c;
+		}
+		return a;
+	}
+}
+class mul extends mymath{
+	private int z;
+	public mul(int x,int y,int z) {
+		super(x,y);
+		this.z=z;
+	}
+	public int cal() {
+		return this.z*this.getX()*this.getY();
+	}
+}
+class mymath{
+	private int x;
+	private int y;
+	public mymath(int x) {
+	this.x=x;
+}
+	public mymath(int x,int y) {
+		this.x=x;
+		this.y=y;
+	}
+	public int cal() {
+		return 0;
+	}
+	public int getX() {
+		return x;
+	}
+	public void setX(int x) {
+		this.x = x;
+	}
+	public int getY() {
+		return y;
+	}
+	public void setY(int y) {
+		this.y = y;
+	}
+}
